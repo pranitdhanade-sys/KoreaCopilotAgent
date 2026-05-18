@@ -1,3 +1,27 @@
 {
-  "items": []
+  "items": [
+    {
+      "id": "copilot-studio-agent-academy",
+      "title": "Copilot Studio Agent Academy (실습)",
+      "icon": "images/icon-10-lightbulb.png",
+      "fallbackEmoji": "💡",
+      "description": "Recruit → Operative → Commander 3단계 배지 트랙으로 Copilot Studio의 핵심 기능(Adaptive Cards, Agent Flows, Grounded Prompts 등)을 직접 만들어 보는 공식 실습 프로그램입니다. Recruit 단계부터 순서대로 풀어 보세요.",
+      "downloads": [
+        { "label": "Agent Academy 시작하기", "url": "https://microsoft.github.io/agent-academy/" },
+        { "label": "한국어 소개 글", "url": "https://microsoft.github.io/mwkorea/copilot/agentacademy/" }
+      ]
+    },
+    {
+      "id": "easy-copilot-lab",
+      "title": "업무에 바로 쓰는 Copilot Studio (EasyCopilotLab)",
+      "icon": "images/icon-05-document.png",
+      "fallbackEmoji": "📄",
+      "description": "개발자 없이 만드는 우리 팀 전용 AI. 기본 1일차(M0~M16)와 심화 2일차(S1~S9)로 구성된 Copilot Studio 2일 실습 과정으로, 지침·지식·도구·게시·흐름·트리거부터 MCP·커스텀 커넥터까지 단계별 모듈로 체계적으로 익힐 수 있습니다.",
+      "downloads": [
+        { "label": "교육 사이트 열기", "url": "https://microsoft.github.io/easycopilotlab/" },
+        { "label": "기본과정 — 1일차", "url": "https://microsoft.github.io/easycopilotlab/docs/basic-course" },
+        { "label": "심화과정 — 2일차", "url": "https://microsoft.github.io/easycopilotlab/docs/advanced-course" }
+      ]
+    }
+  ]
 }
