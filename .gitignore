@@ -1,0 +1,3 @@
+# Local debug screenshots (do not commit)
+.debug_*.png
+.debug_*.jpg
