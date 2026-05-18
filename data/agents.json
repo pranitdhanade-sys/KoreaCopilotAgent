@@ -16,7 +16,7 @@
     {
       "id": "meeting-notes",
       "title": "회의록 작성 도우미",
-      "icon": "images/icon-01-calendar.png",
+      "icon": "images/svg/meeting-notes.svg",
       "fallbackEmoji": "📅",
       "description": "회의 내용을 자동으로 정리하고 요약하여 정확한 회의록을 빠르게 생성합니다.",
       "downloads": [
