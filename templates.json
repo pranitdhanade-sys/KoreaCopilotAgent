@@ -3,6 +3,7 @@
     { "type": "agent",  "tagLabel": "Agent",             "source": "data/agents.json" },
     { "type": "prompt", "tagLabel": "Prompt",            "source": "data/prompts.json" },
     { "type": "skill",  "tagLabel": "Cowork Skill",     "source": "data/skills.json" },
-    { "type": "course", "tagLabel": "Course",            "source": "data/courses.json" }
+    { "type": "course",  "tagLabel": "Course",   "source": "data/courses.json" },
+    { "type": "handson", "tagLabel": "Hands-on", "source": "data/handson.json" }
   ]
 }
