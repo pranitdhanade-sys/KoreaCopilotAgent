@@ -201,7 +201,7 @@ svg {
 /* ============== Hero ============== */
 .hero {
   position: relative;
-  padding: 56px 0 72px;
+  padding: 24px 0 32px;
   background:
     radial-gradient(900px 480px at 75% 0%, rgba(139, 92, 255, 0.10), transparent 60%),
     radial-gradient(700px 360px at 5% 30%, rgba(37, 99, 255, 0.08), transparent 60%),
@@ -211,7 +211,7 @@ svg {
 .hero-grid {
   display: grid;
   grid-template-columns: 1.05fr 0.95fr;
-  gap: 40px;
+  gap: 32px;
   align-items: center;
 }
 
@@ -306,11 +306,14 @@ svg {
 .hero-visual img,
 .hero-visual .hero-placeholder {
   width: 100%;
-  max-width: 520px;
+  max-width: 440px;
   height: auto;
   aspect-ratio: 1 / 1;
   object-fit: contain;
+  /* trim transparent padding of generated illustration */
+  margin: -40px 0;
 }
+.hero-visual .hero-placeholder { margin: 0; }
 .hero-placeholder {
   display: flex;
   align-items: center;
@@ -331,7 +334,7 @@ svg {
   justify-content: space-between;
   gap: 16px;
   flex-wrap: wrap;
-  padding: 32px 0 28px;
+  padding: 8px 0 24px;
 }
 
 .filter-tabs {
