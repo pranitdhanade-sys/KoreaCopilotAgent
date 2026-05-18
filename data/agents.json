@@ -1,0 +1,48 @@
+{
+  "items": [
+    {
+      "id": "meeting-notes",
+      "title": "회의록 작성 도우미",
+      "icon": "images/icon-01-calendar.png",
+      "fallbackEmoji": "📅",
+      "description": "회의 내용을 자동으로 정리하고 요약하여 정확한 회의록을 빠르게 생성합니다.",
+      "downloads": [
+        { "label": "템플릿 파일 다운로드", "fileType": "ZIP", "url": "#" },
+        { "label": "사용 가이드 다운로드", "fileType": "PDF", "url": "#" }
+      ]
+    },
+    {
+      "id": "sales-proposal",
+      "title": "영업 제안서 생성기",
+      "icon": "images/icon-02-briefcase.png",
+      "fallbackEmoji": "💼",
+      "description": "고객 정보와 요구사항을 분석해 맞춤형 제안서를 자동으로 작성합니다.",
+      "downloads": [
+        { "label": "템플릿 파일 다운로드", "fileType": "ZIP", "url": "#" },
+        { "label": "사용 가이드 다운로드", "fileType": "PPTX", "url": "#" }
+      ]
+    },
+    {
+      "id": "legal-contract-review",
+      "title": "법무 계약서 검토 에이전트",
+      "icon": "images/icon-03-gavel.png",
+      "fallbackEmoji": "⚖️",
+      "description": "계약서의 주요 조항과 위험 요소를 분석해 법무 검토 리포트를 제공합니다.",
+      "downloads": [
+        { "label": "템플릿 파일 다운로드", "fileType": "ZIP", "url": "#" },
+        { "label": "사용 가이드 다운로드", "fileType": "PDF", "url": "#" }
+      ]
+    },
+    {
+      "id": "customer-script-bot",
+      "title": "고객 응대 스크립트 봇",
+      "icon": "images/icon-04-headset.png",
+      "fallbackEmoji": "🎧",
+      "description": "고객 문의 유형을 파악하고 상황에 맞는 응대 스크립트를 답변형으로 제안합니다.",
+      "downloads": [
+        { "label": "템플릿 파일 다운로드", "fileType": "ZIP", "url": "#" },
+        { "label": "사용 가이드 다운로드", "fileType": "DOCX", "url": "#" }
+      ]
+    }
+  ]
+}

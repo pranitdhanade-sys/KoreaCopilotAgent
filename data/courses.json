@@ -1,0 +1,26 @@
+{
+  "items": [
+    {
+      "id": "m365-copilot-intro-course",
+      "title": "M365 Copilot 도입 교육 (2시간)",
+      "icon": "images/icon-09-grad-cap.png",
+      "fallbackEmoji": "🎓",
+      "description": "M365 Copilot의 핵심 기능과 활용법을 실습 중심으로 학습합니다.",
+      "downloads": [
+        { "label": "강의 자료 다운로드", "fileType": "PPTX", "url": "#" },
+        { "label": "워크북 다운로드", "fileType": "PDF", "url": "#" }
+      ]
+    },
+    {
+      "id": "copilot-studio-workshop",
+      "title": "Copilot Studio 실전 워크숍",
+      "icon": "images/icon-10-lightbulb.png",
+      "fallbackEmoji": "💡",
+      "description": "나만의 Copilot을 설계하고 배포하는 실습 위주 프로그램입니다.",
+      "downloads": [
+        { "label": "강의 자료 다운로드", "fileType": "PPTX", "url": "#" },
+        { "label": "워크북 다운로드", "fileType": "PDF", "url": "#" }
+      ]
+    }
+  ]
+}

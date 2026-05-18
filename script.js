@@ -37,7 +37,7 @@
   const tabs = Array.from(document.querySelectorAll(".filter-tab"));
 
   let cards = [];
-  let currentFilter = "all";
+  let currentFilter = "agent";
   let currentQuery = "";
 
   function escapeHtml(value) {
@@ -142,14 +142,31 @@
     try {
       const res = await fetch("templates.json", { cache: "no-cache" });
       if (!res.ok) throw new Error("HTTP " + res.status);
-      const data = await res.json();
-      const items = Array.isArray(data) ? data : data && data.templates;
-      if (!Array.isArray(items)) throw new Error("Invalid templates.json shape");
-      renderTemplates(items);
+      const manifest = await res.json();
+      const categories = (manifest && manifest.categories) || [];
+      if (!Array.isArray(categories) || categories.length === 0) {
+        throw new Error("Invalid templates.json manifest shape");
+      }
+
+      const groups = await Promise.all(
+        categories.map(async (cat) => {
+          const r = await fetch(cat.source, { cache: "no-cache" });
+          if (!r.ok) throw new Error(cat.source + " HTTP " + r.status);
+          const json = await r.json();
+          const items = (json && json.items) || [];
+          return items.map((item) => Object.assign({}, item, {
+            type: cat.type,
+            tagLabel: cat.tagLabel,
+          }));
+        })
+      );
+
+      const merged = groups.reduce((acc, arr) => acc.concat(arr), []);
+      renderTemplates(merged);
     } catch (err) {
       console.error("[templates] load failed", err);
       renderMessage(
-        "템플릿을 불러오지 못했습니다. 페이지를 새로고침해 주시거나 templates.json을 확인해 주세요."
+        "템플릿을 불러오지 못했습니다. 페이지를 새로고침해 주시거나 templates.json / data/*.json을 확인해 주세요."
       );
     }
   }
