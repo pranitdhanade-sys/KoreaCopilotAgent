@@ -57,14 +57,32 @@
 
     const downloads = (template.downloads || [])
       .map((d) => {
-        const aria = `${template.title} ${d.label} (${d.fileType})`;
-        const isExternal = d.url && d.url !== "#";
+        const fileType = d.fileType || "";
+        const isUrlLink = !fileType || fileType.toUpperCase() === "URL";
+        const url = d.url || "#";
+        const isPlaceholder = !d.url || d.url === "#";
+
+        const aria = !isUrlLink && fileType
+          ? `${template.title} ${d.label} (${fileType})`
+          : `${template.title} ${d.label}`;
+
+        let linkAttrs = "";
+        if (!isPlaceholder) {
+          linkAttrs = isUrlLink
+            ? ' target="_blank" rel="noopener noreferrer"'
+            : ' download';
+        }
+
+        const badge = (!isUrlLink && fileType)
+          ? '<span class="file-type">.' + escapeHtml(fileType) + "</span>"
+          : "";
+
         return (
-          '<a class="download-row" href="' + escapeHtml(d.url || "#") + '"' +
+          '<a class="download-row" href="' + escapeHtml(url) + '"' +
           ' aria-label="' + escapeHtml(aria) + '"' +
-          (isExternal ? ' download' : "") + ">" +
+          linkAttrs + ">" +
             "<span>" + escapeHtml(d.label) + "</span>" +
-            '<span class="file-type">.' + escapeHtml(d.fileType) + "</span>" +
+            badge +
           "</a>"
         );
       })
