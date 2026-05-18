@@ -1,0 +1,17 @@
+# Image assets
+#
+# Drop the following PNGs (transparent background, square) into this folder:
+#
+#   hero.png                   — main 3D illustration (people + AI robot)
+#   icon-01-calendar.png       — 회의록 작성 도우미
+#   icon-02-briefcase.png      — 영업 제안서 생성기
+#   icon-03-gavel.png          — 법무 계약서 검토 에이전트
+#   icon-04-headset.png        — 고객 응대 스크립트 봇
+#   icon-05-document.png       — 임원 보고용 요약 프롬프트
+#   icon-06-chart.png          — 데이터 분석 프롬프트 팩
+#   icon-07-gear.png           — Copilot 일정 관리 스킬
+#   icon-08-mail.png           — 한국어 이메일 톤 매니저 스킬
+#   icon-09-grad-cap.png       — M365 Copilot 도입 교육
+#   icon-10-lightbulb.png      — Copilot Studio 실전 워크숍
+#
+# See IMAGE_PROMPTS.md in the repo root for the exact ChatGPT/DALL·E prompts.
