@@ -410,6 +410,17 @@ svg {
   grid-template-columns: repeat(2, 1fr);
   gap: 22px;
 }
+.template-grid[aria-busy="true"] {
+  grid-template-columns: 1fr;
+}
+.template-loading {
+  grid-column: 1 / -1;
+  text-align: center;
+  color: var(--text-dim);
+  font-size: 14.5px;
+  padding: 28px 0;
+  margin: 0;
+}
 
 .template-card {
   display: grid;

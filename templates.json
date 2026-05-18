@@ -1,0 +1,135 @@
+{
+  "$schema": "./templates.schema.json",
+  "templates": [
+    {
+      "id": "meeting-notes",
+      "type": "agent",
+      "title": "회의록 작성 도우미",
+      "tagLabel": "Declarative Agent",
+      "icon": "images/icon-01-calendar.png",
+      "fallbackEmoji": "📅",
+      "description": "회의 내용을 자동으로 정리하고 요약하여 정확한 회의록을 빠르게 생성합니다.",
+      "downloads": [
+        { "label": "템플릿 파일 다운로드", "fileType": "ZIP", "url": "#" },
+        { "label": "사용 가이드 다운로드", "fileType": "PDF", "url": "#" }
+      ]
+    },
+    {
+      "id": "sales-proposal",
+      "type": "agent",
+      "title": "영업 제안서 생성기",
+      "tagLabel": "Declarative Agent",
+      "icon": "images/icon-02-briefcase.png",
+      "fallbackEmoji": "💼",
+      "description": "고객 정보와 요구사항을 분석해 맞춤형 제안서를 자동으로 작성합니다.",
+      "downloads": [
+        { "label": "템플릿 파일 다운로드", "fileType": "ZIP", "url": "#" },
+        { "label": "사용 가이드 다운로드", "fileType": "PPTX", "url": "#" }
+      ]
+    },
+    {
+      "id": "legal-contract-review",
+      "type": "agent",
+      "title": "법무 계약서 검토 에이전트",
+      "tagLabel": "Declarative Agent",
+      "icon": "images/icon-03-gavel.png",
+      "fallbackEmoji": "⚖️",
+      "description": "계약서의 주요 조항과 위험 요소를 분석해 법무 검토 리포트를 제공합니다.",
+      "downloads": [
+        { "label": "템플릿 파일 다운로드", "fileType": "ZIP", "url": "#" },
+        { "label": "사용 가이드 다운로드", "fileType": "PDF", "url": "#" }
+      ]
+    },
+    {
+      "id": "customer-script-bot",
+      "type": "agent",
+      "title": "고객 응대 스크립트 봇",
+      "tagLabel": "Declarative Agent",
+      "icon": "images/icon-04-headset.png",
+      "fallbackEmoji": "🎧",
+      "description": "고객 문의 유형을 파악하고 상황에 맞는 응대 스크립트를 답변형으로 제안합니다.",
+      "downloads": [
+        { "label": "템플릿 파일 다운로드", "fileType": "ZIP", "url": "#" },
+        { "label": "사용 가이드 다운로드", "fileType": "DOCX", "url": "#" }
+      ]
+    },
+    {
+      "id": "exec-summary-prompt",
+      "type": "prompt",
+      "title": "임원 보고용 요약 프롬프트",
+      "tagLabel": "Prompt",
+      "icon": "images/icon-05-document.png",
+      "fallbackEmoji": "📄",
+      "description": "긴 문서나 보고서를 임원용으로 요약하여 핵심 인사이트를 도출합니다.",
+      "downloads": [
+        { "label": "프롬프트 파일 다운로드", "fileType": "ZIP", "url": "#" },
+        { "label": "사용 가이드 다운로드", "fileType": "PDF", "url": "#" }
+      ]
+    },
+    {
+      "id": "data-analysis-prompt-pack",
+      "type": "prompt",
+      "title": "데이터 분석 프롬프트 팩",
+      "tagLabel": "Prompt",
+      "icon": "images/icon-06-chart.png",
+      "fallbackEmoji": "📊",
+      "description": "다양한 데이터 분석 시나리오에 맞춰 프롬프트 모음으로 분석을 가속화합니다.",
+      "downloads": [
+        { "label": "프롬프트 파일 다운로드", "fileType": "ZIP", "url": "#" },
+        { "label": "사용 가이드 다운로드", "fileType": "PPTX", "url": "#" }
+      ]
+    },
+    {
+      "id": "copilot-calendar-skill",
+      "type": "skill",
+      "title": "Copilot 일정 관리 스킬",
+      "tagLabel": "Copilot Skill",
+      "icon": "images/icon-07-gear.png",
+      "fallbackEmoji": "⚙️",
+      "description": "일정 조회, 등록, 변경 및 리마인더 설정을 자연어로 간편하게 처리합니다.",
+      "downloads": [
+        { "label": "스킬 패키지 다운로드", "fileType": "ZIP", "url": "#" },
+        { "label": "설치 가이드 다운로드", "fileType": "PDF", "url": "#" }
+      ]
+    },
+    {
+      "id": "korean-email-tone-skill",
+      "type": "skill",
+      "title": "한국어 이메일 톤 매니저 스킬",
+      "tagLabel": "Copilot Skill",
+      "icon": "images/icon-08-mail.png",
+      "fallbackEmoji": "✉️",
+      "description": "상황과 대상에 맞는 적절한 톤의 이메일 초안을 제안해줍니다.",
+      "downloads": [
+        { "label": "스킬 패키지 다운로드", "fileType": "ZIP", "url": "#" },
+        { "label": "설치 가이드 다운로드", "fileType": "PDF", "url": "#" }
+      ]
+    },
+    {
+      "id": "m365-copilot-intro-course",
+      "type": "course",
+      "title": "M365 Copilot 도입 교육 (2시간)",
+      "tagLabel": "Course",
+      "icon": "images/icon-09-grad-cap.png",
+      "fallbackEmoji": "🎓",
+      "description": "M365 Copilot의 핵심 기능과 활용법을 실습 중심으로 학습합니다.",
+      "downloads": [
+        { "label": "강의 자료 다운로드", "fileType": "PPTX", "url": "#" },
+        { "label": "워크북 다운로드", "fileType": "PDF", "url": "#" }
+      ]
+    },
+    {
+      "id": "copilot-studio-workshop",
+      "type": "course",
+      "title": "Copilot Studio 실전 워크숍",
+      "tagLabel": "Course",
+      "icon": "images/icon-10-lightbulb.png",
+      "fallbackEmoji": "💡",
+      "description": "나만의 Copilot을 설계하고 배포하는 실습 위주 프로그램입니다.",
+      "downloads": [
+        { "label": "강의 자료 다운로드", "fileType": "PPTX", "url": "#" },
+        { "label": "워크북 다운로드", "fileType": "PDF", "url": "#" }
+      ]
+    }
+  ]
+}

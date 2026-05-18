@@ -30,20 +30,72 @@
     yearEl.textContent = String(new Date().getFullYear());
   }
 
-  /* ---------- Template filter + search ---------- */
-  const tabs = Array.from(document.querySelectorAll(".filter-tab"));
-  const cards = Array.from(document.querySelectorAll(".template-card"));
-  const searchInput = document.getElementById("template-search");
+  /* ---------- Template rendering ---------- */
+  const grid = document.getElementById("template-grid");
   const noResults = document.getElementById("no-results");
+  const searchInput = document.getElementById("template-search");
+  const tabs = Array.from(document.querySelectorAll(".filter-tab"));
 
+  let cards = [];
   let currentFilter = "all";
   let currentQuery = "";
+
+  function escapeHtml(value) {
+    return String(value == null ? "" : value)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#39;");
+  }
+
+  function renderCard(template, index) {
+    const article = document.createElement("article");
+    article.className = "template-card";
+    article.dataset.type = template.type || "agent";
+    if (template.id) article.dataset.id = template.id;
+
+    const downloads = (template.downloads || [])
+      .map((d) => {
+        const aria = `${template.title} ${d.label} (${d.fileType})`;
+        const isExternal = d.url && d.url !== "#";
+        return (
+          '<a class="download-row" href="' + escapeHtml(d.url || "#") + '"' +
+          ' aria-label="' + escapeHtml(aria) + '"' +
+          (isExternal ? ' download' : "") + ">" +
+            "<span>" + escapeHtml(d.label) + "</span>" +
+            '<span class="file-type">.' + escapeHtml(d.fileType) + "</span>" +
+          "</a>"
+        );
+      })
+      .join("");
+
+    const fallback = escapeHtml(template.fallbackEmoji || "📦");
+
+    article.innerHTML =
+      '<div class="template-icon">' +
+        '<img src="' + escapeHtml(template.icon) + '" alt=""' +
+        " onerror=\"this.parentElement.classList.add('placeholder');this.outerHTML='" + fallback + "'\">" +
+      "</div>" +
+      '<div class="template-body">' +
+        '<div class="template-head">' +
+          "<h3>" + (index + 1) + ". " + escapeHtml(template.title) + "</h3>" +
+          '<span class="tag" data-tag="' + escapeHtml(template.type) + '">' + escapeHtml(template.tagLabel) + "</span>" +
+        "</div>" +
+        '<p class="template-desc">' + escapeHtml(template.description) + "</p>" +
+        '<div class="downloads-label">Downloads</div>' +
+        downloads +
+      "</div>";
+
+    return article;
+  }
 
   function normalize(value) {
     return (value || "").toLowerCase().trim();
   }
 
   function applyFilters() {
+    if (!cards.length) return;
     let visibleCount = 0;
     const query = normalize(currentQuery);
 
@@ -64,6 +116,45 @@
     }
   }
 
+  function renderTemplates(items) {
+    if (!grid) return;
+    grid.innerHTML = "";
+    const frag = document.createDocumentFragment();
+    items.forEach((t, i) => frag.appendChild(renderCard(t, i)));
+    grid.appendChild(frag);
+    grid.setAttribute("aria-busy", "false");
+    cards = Array.from(grid.querySelectorAll(".template-card"));
+    applyFilters();
+  }
+
+  function renderMessage(message) {
+    if (!grid) return;
+    grid.innerHTML = "";
+    grid.setAttribute("aria-busy", "false");
+    const p = document.createElement("p");
+    p.className = "template-loading";
+    p.textContent = message;
+    grid.appendChild(p);
+  }
+
+  async function loadTemplates() {
+    if (!grid) return;
+    try {
+      const res = await fetch("templates.json", { cache: "no-cache" });
+      if (!res.ok) throw new Error("HTTP " + res.status);
+      const data = await res.json();
+      const items = Array.isArray(data) ? data : data && data.templates;
+      if (!Array.isArray(items)) throw new Error("Invalid templates.json shape");
+      renderTemplates(items);
+    } catch (err) {
+      console.error("[templates] load failed", err);
+      renderMessage(
+        "템플릿을 불러오지 못했습니다. 페이지를 새로고침해 주시거나 templates.json을 확인해 주세요."
+      );
+    }
+  }
+
+  /* ---------- Filter tabs ---------- */
   tabs.forEach((tab) => {
     tab.addEventListener("click", () => {
       tabs.forEach((t) => {
@@ -77,6 +168,7 @@
     });
   });
 
+  /* ---------- Search ---------- */
   if (searchInput) {
     let debounceId;
     searchInput.addEventListener("input", (event) => {
@@ -93,13 +185,17 @@
   const downloadAllBtn = document.getElementById("download-all");
   if (downloadAllBtn) {
     downloadAllBtn.addEventListener("click", () => {
-      // Real bundle is not wired yet — provide a friendly hint instead of a broken link.
       const visibleCards = cards.filter((c) => !c.hidden).length;
-      const label = visibleCards === cards.length
+      const total = cards.length;
+      const label = visibleCards === total
         ? "전체 템플릿 패키지는 곧 제공될 예정입니다."
-        : `현재 표시 중인 ${visibleCards}개 항목을 묶는 번들은 준비 중입니다.`;
+        : "현재 표시 중인 " + visibleCards + "개 항목을 묶는 번들은 준비 중입니다.";
       // eslint-disable-next-line no-alert
       alert(label + "\n각 카드의 개별 다운로드를 이용해 주세요.");
     });
   }
+
+  /* ---------- Boot ---------- */
+  loadTemplates();
 })();
+
