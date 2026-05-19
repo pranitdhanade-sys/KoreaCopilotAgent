@@ -1,4 +1,4 @@
-{
+﻿{
   "items": [
     {
       "id": "copilot-faq-agent",
@@ -67,6 +67,20 @@
         { "label": "템플릿 파일 다운로드", "fileType": "ZIP", "url": "#" },
         { "label": "사용 가이드 다운로드", "fileType": "PDF", "url": "#" }
       ]
+    },
+    {
+      "id": "m365-agent-templates",
+      "title": "본사 공식 M365 에이전트 템플릿 갤러리",
+      "icon": "images/illustrations/m365-agent-templates.png",
+      "fallbackEmoji": "🗂️",
+      "description": "Microsoft CAPE 팀이 만든 즉시 배포 가능한 Microsoft 365 Copilot · Copilot Studio 에이전트 템플릿 모음입니다. AI Learning Advisor, Plan My Day, Executive Briefing, Know My Customer 등 10여 종을 각 항목별 ZIP 패키지·설치 가이드 PDF·개요 PPTX·평가 테스트 플랜과 함께 받아 바로 가져다 쓸 수 있습니다.",
+      "downloads": [
+        { "label": "갤러리 메인 열기", "fileType": "URL", "url": "https://microsoft.github.io/m365-agent-templates/" },
+        { "label": "전체 리포 ZIP 다운로드", "fileType": "URL", "url": "https://github.com/microsoft/m365-agent-templates/archive/refs/heads/main.zip" },
+        { "label": "AI Learning Advisor 살펴보기", "fileType": "URL", "url": "https://github.com/microsoft/m365-agent-templates/tree/main/AI%20Learning%20Advisor#ai-learning-advisor-agent" },
+        { "label": "GitHub 리포지토리", "fileType": "URL", "url": "https://github.com/microsoft/m365-agent-templates" }
+      ]
     }
   ]
 }
+
