@@ -3,7 +3,7 @@
     {
       "id": "copilot-faq-agent",
       "title": "코파일럿 FAQ 에이전트",
-      "icon": "images/icon-02-briefcase.png",
+      "icon": "images/illustrations/copilot-faq-agent.png",
       "fallbackEmoji": "💼",
       "description": "고객사 Copilot 도입 초기에 사용자들이 반복적으로 묻는 질문(라이선스, 보안, 데이터, 프롬프트 등)을 Copilot 안에서 즉시 셀프서비스로 해소합니다.",
       "downloads": [
@@ -27,7 +27,7 @@
     {
       "id": "sales-proposal",
       "title": "영업 제안서 생성기",
-      "icon": "images/icon-02-briefcase.png",
+      "icon": "images/illustrations/sales-proposal.png",
       "fallbackEmoji": "💼",
       "description": "고객 정보와 요구사항을 분석해 맞춤형 제안서를 자동으로 작성합니다.",
       "downloads": [
@@ -38,7 +38,7 @@
     {
       "id": "legal-contract-review",
       "title": "법무 계약서 검토 에이전트",
-      "icon": "images/icon-03-gavel.png",
+      "icon": "images/illustrations/legal-contract-review.png",
       "fallbackEmoji": "⚖️",
       "description": "계약서의 주요 조항과 위험 요소를 분석해 법무 검토 리포트를 제공합니다.",
       "downloads": [
@@ -49,7 +49,7 @@
     {
       "id": "customer-script-bot",
       "title": "고객 응대 스크립트 봇",
-      "icon": "images/icon-04-headset.png",
+      "icon": "images/illustrations/customer-script-bot.png",
       "fallbackEmoji": "🎧",
       "description": "고객 문의 유형을 파악하고 상황에 맞는 응대 스크립트를 답변형으로 제안합니다.",
       "downloads": [
