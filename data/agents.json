@@ -56,6 +56,17 @@
         { "label": "템플릿 파일 다운로드", "fileType": "ZIP", "url": "#" },
         { "label": "사용 가이드 다운로드", "fileType": "DOCX", "url": "#" }
       ]
+    },
+    {
+      "id": "weekly-report-agent",
+      "title": "주간보고 뚝딱 에이전트",
+      "icon": "images/illustrations/weekly-report-agent.png",
+      "fallbackEmoji": "📝",
+      "description": "한 주 동안의 업무 내역과 일정을 모아 자동으로 정리하고, 주간보고 양식에 맞춰 깔끔한 초안을 빠르게 만들어 줍니다.",
+      "downloads": [
+        { "label": "템플릿 파일 다운로드", "fileType": "ZIP", "url": "#" },
+        { "label": "사용 가이드 다운로드", "fileType": "PDF", "url": "#" }
+      ]
     }
   ]
 }
