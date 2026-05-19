@@ -72,6 +72,12 @@ templates/<id>/...          # 다운로드 가능한 ZIP/PDF/DOCX 등 자산
 - 일반적으로 **3~4개**: 메인 사이트 1개 + 주요 섹션/단계 2~3개 + GitHub/원본 1개.
 - 핵심 진입점부터 시작해서 깊이 있는 자료로 내려가는 순서.
 
+### 카드 번호 매기기
+- 카드 제목 앞 번호는 `script.js`의 `renderTemplates`가 **카테고리별로 1부터** 자동 부여 (`perTypeCount` 카운터).
+- 즉 JSON에 명시적 번호를 넣지 않습니다 — `items[]` 배열의 순서가 곧 카드 번호.
+- 새 항목은 보통 해당 `data/<category>.json`의 **`items` 배열 끝에 append** → 그 카테고리의 마지막 번호로 들어감.
+- 순서를 바꾸려면 배열 위치를 옮기면 됩니다.
+
 ### 새 카드 추가 후 확인할 것
 - [ ] `images/illustrations/<id>.png`가 존재하는가
 - [ ] 외부 URL에 `fileType: "URL"`이 들어가 있는가
