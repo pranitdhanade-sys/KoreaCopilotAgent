@@ -48,6 +48,19 @@
         { "label": "Step 5 — Copilot Studio 에이전트 초기 구축", "fileType": "URL", "url": "https://github.com/ChangJu-Ahn/Power-Platform-Hands-on/blob/main/Copilot%20Studio%20-%20TicketMaster%20Agent/Step%205%20-%20Copilot%20Studio%20%EC%97%90%EC%9D%B4%EC%A0%84%ED%8A%B8%20%EC%B4%88%EA%B8%B0%20%EA%B5%AC%EC%B6%95.md" },
         { "label": "원본 영상 (YouTube)", "fileType": "URL", "url": "https://www.youtube.com/watch?v=ZcUUv39dcig" }
       ]
+    },
+    {
+      "id": "copilot-agentic-blog",
+      "title": "Microsoft Copilot Agentic Blog — 실무 가이드 & 핸즈온",
+      "icon": "images/illustrations/copilot-agentic-blog.png",
+      "fallbackEmoji": "📘",
+      "description": "Copilot Studio 도입 검토부터 운영까지 8장으로 정리한 실무 가이드와, 블로그 포스트 에이전트·문서검색 에스컬레이션·MCP 자율동작 에이전트 등 따라하기 쉬운 핸즈온 워크샵, 그리고 2026 H1 업데이트까지 한 곳에서 확인할 수 있는 한국어 학습 허브입니다.",
+      "downloads": [
+        { "label": "블로그 메인 열기", "fileType": "URL", "url": "https://chichoi1991.github.io/Agent_Blog/" },
+        { "label": "핸즈온 #1 — 블로그 포스트 에이전트", "fileType": "URL", "url": "https://chichoi1991.github.io/Agent_Blog/chapters/ws1-0-overview/" },
+        { "label": "핸즈온 #3 — 자율동작 에이전트 (MCP)", "fileType": "URL", "url": "https://chichoi1991.github.io/Agent_Blog/chapters/ws3-0-overview/" },
+        { "label": "[리뉴얼] Copilot Studio 기본 기능 통합 핸즈온", "fileType": "URL", "url": "https://chichoi1991.github.io/Agent_Blog/chapters/ws5-0-overview/" }
+      ]
     }
   ]
 }
