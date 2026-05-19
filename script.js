@@ -138,7 +138,13 @@
     if (!grid) return;
     grid.innerHTML = "";
     const frag = document.createDocumentFragment();
-    items.forEach((t, i) => frag.appendChild(renderCard(t, i)));
+    const perTypeCount = {};
+    items.forEach((t) => {
+      const type = t.type || "all";
+      const localIndex = perTypeCount[type] || 0;
+      perTypeCount[type] = localIndex + 1;
+      frag.appendChild(renderCard(t, localIndex));
+    });
     grid.appendChild(frag);
     grid.setAttribute("aria-busy", "false");
     cards = Array.from(grid.querySelectorAll(".template-card"));
