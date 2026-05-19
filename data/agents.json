@@ -14,44 +14,44 @@
       "developer": "이수민"
     },
     {
-      "id": "meeting-notes",
-      "title": "회의록 작성 도우미",
-      "icon": "images/illustrations/meeting-notes.png",
-      "fallbackEmoji": "📅",
-      "description": "회의 내용을 자동으로 정리하고 요약하여 정확한 회의록을 빠르게 생성합니다.",
+      "id": "news-report-agent",
+      "title": "뉴스 리포트 자동화 에이전트",
+      "icon": "images/illustrations/news-report-agent.png",
+      "fallbackEmoji": "📰",
+      "description": "주요 뉴스를 크롤링해 요약하고, 관련된 내부 문서나 데이터와 연결하여 맞춤형 리포트를 생성합니다.",
       "downloads": [
         { "label": "템플릿 파일 다운로드", "fileType": "ZIP", "url": "#" },
         { "label": "사용 가이드 다운로드", "fileType": "PDF", "url": "#" }
       ]
     },
     {
-      "id": "sales-proposal",
-      "title": "영업 제안서 생성기",
-      "icon": "images/illustrations/sales-proposal.png",
-      "fallbackEmoji": "💼",
-      "description": "고객 정보와 요구사항을 분석해 맞춤형 제안서를 자동으로 작성합니다.",
+      "id": "contract-management-agent",
+      "title": "계약서 관리 에이전트",
+      "icon": "images/illustrations/contract-management-agent.png",
+      "fallbackEmoji": "📑",
+      "description": "계약서의 주요 조항과 위험 요소를 분석해 정리하고 리포트를 제공합니다. 계약기간에 대한 알림을 자동화 합니다.",
       "downloads": [
         { "label": "템플릿 파일 다운로드", "fileType": "ZIP", "url": "#" },
         { "label": "사용 가이드 다운로드", "fileType": "PPTX", "url": "#" }
       ]
     },
     {
-      "id": "legal-contract-review",
-      "title": "법무 계약서 검토 에이전트",
-      "icon": "images/illustrations/legal-contract-review.png",
-      "fallbackEmoji": "⚖️",
-      "description": "계약서의 주요 조항과 위험 요소를 분석해 법무 검토 리포트를 제공합니다.",
+      "id": "report-generator-agent",
+      "title": "보고서 자동 생성 에이전트",
+      "icon": "images/illustrations/report-generator-agent.png",
+      "fallbackEmoji": "📊",
+      "description": "문서와 데이터를 분석하여 주요 인사이트를 추출하고, 이를 기반으로 맞춤형 보고서를 자동으로 생성합니다.",
       "downloads": [
         { "label": "템플릿 파일 다운로드", "fileType": "ZIP", "url": "#" },
         { "label": "사용 가이드 다운로드", "fileType": "PDF", "url": "#" }
       ]
     },
     {
-      "id": "customer-script-bot",
-      "title": "고객 응대 스크립트 봇",
-      "icon": "images/illustrations/customer-script-bot.png",
-      "fallbackEmoji": "🎧",
-      "description": "고객 문의 유형을 파악하고 상황에 맞는 응대 스크립트를 답변형으로 제안합니다.",
+      "id": "virtual-exec-meeting-agent",
+      "title": "가상 임원회의 에이전트",
+      "icon": "images/illustrations/virtual-exec-meeting-agent.png",
+      "fallbackEmoji": "👥",
+      "description": "가상 임원회의를 시뮬레이션하여 다양한 시나리오에 대한 대응 전략을 제안합니다.",
       "downloads": [
         { "label": "템플릿 파일 다운로드", "fileType": "ZIP", "url": "#" },
         { "label": "사용 가이드 다운로드", "fileType": "DOCX", "url": "#" }
