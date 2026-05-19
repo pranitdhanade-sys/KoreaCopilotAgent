@@ -22,6 +22,19 @@
         { "label": "기본과정 — 1일차", "fileType": "URL", "url": "https://microsoft.github.io/easycopilotlab/docs/basic-course" },
         { "label": "심화과정 — 2일차", "fileType": "URL", "url": "https://microsoft.github.io/easycopilotlab/docs/advanced-course" }
       ]
+    },
+    {
+      "id": "l400-copilot-agents-at-work",
+      "title": "TechWorkshop L400 — Copilot Studio와 에이전트 실전",
+      "icon": "images/illustrations/l400-copilot-agents-at-work.png",
+      "fallbackEmoji": "🤖",
+      "description": "Zava Retail Group 시나리오로 진행하는 Microsoft L400 고급 워크샵. Copilot Studio 에이전트 제작부터 엔터프라이즈 통합, 멀티 에이전트 솔루션, 평가·거버넌스·ALM까지 7개 연습으로 깊이 있게 다루는 실습 랩입니다.",
+      "downloads": [
+        { "label": "워크샵 사이트 열기", "fileType": "URL", "url": "https://microsoft.github.io/L400-Copilot-and-Agents-at-work/" },
+        { "label": "Ex 01 — Copilot Studio로 에이전트 만들기", "fileType": "URL", "url": "https://microsoft.github.io/L400-Copilot-and-Agents-at-work/Docs/01_CreateAgentsCopilotStudio/01_CreateAgentsCopilotStudio.html" },
+        { "label": "Ex 03 — 멀티 플랫폼 에이전트 솔루션", "fileType": "URL", "url": "https://microsoft.github.io/L400-Copilot-and-Agents-at-work/Docs/03_ImplementMultiPlatform/03_ImplementMultiPlatform.html" },
+        { "label": "GitHub 리포지토리", "fileType": "URL", "url": "https://github.com/microsoft/L400-Copilot-and-Agents-at-work" }
+      ]
     }
   ]
 }
