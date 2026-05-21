@@ -122,7 +122,12 @@ Create a square 1:1 flat 3D icon illustration: <피사체 + 핵심 디테일 1~2
 - periwinkle + lavender
 - sage green + cream butter ← `m365-agent-templates` 슬롯
 
-추천 미사용 후보: `soft blue + periwinkle`, `salmon + coral`, `butter yellow + mint`, `dusty pink + sand`, `lavender + rose`, `seafoam + butter`, `apricot + cream`.
+**skills**
+- soft blue + periwinkle ← `ai-news-briefing-skill`
+- lavender + rose pink ← `daily-work-wrapup-skill`
+- seafoam + butter yellow ← `today-wisdom-skill`
+
+추천 미사용 후보: `salmon + coral`, `butter yellow + mint`, `dusty pink + sand`, `apricot + cream`.
 
 > 새 카드를 만든 직후 이 파일의 팔레트 목록에 추가하세요. 그렇지 않으면 다음 세션이 같은 색을 또 씁니다.
 
