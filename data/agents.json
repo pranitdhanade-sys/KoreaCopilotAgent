@@ -53,28 +53,6 @@
       "developer": "김유연"
     },
     {
-      "id": "virtual-exec-meeting-agent",
-      "title": "가상 임원회의 에이전트",
-      "icon": "images/illustrations/virtual-exec-meeting-agent.png",
-      "fallbackEmoji": "👥",
-      "description": "가상 임원회의를 시뮬레이션하여 다양한 시나리오에 대한 대응 전략을 제안합니다.",
-      "downloads": [
-        { "label": "템플릿 파일 다운로드", "fileType": "ZIP", "url": "#" },
-        { "label": "사용 가이드 다운로드", "fileType": "DOCX", "url": "#" }
-      ]
-    },
-    {
-      "id": "weekly-report-agent",
-      "title": "주간보고 뚝딱 에이전트",
-      "icon": "images/illustrations/weekly-report-agent.png",
-      "fallbackEmoji": "📝",
-      "description": "한 주 동안의 업무 내역과 일정을 모아 자동으로 정리하고, 주간보고 양식에 맞춰 깔끔한 초안을 빠르게 만들어 줍니다.",
-      "downloads": [
-        { "label": "템플릿 파일 다운로드", "fileType": "ZIP", "url": "#" },
-        { "label": "사용 가이드 다운로드", "fileType": "PDF", "url": "#" }
-      ]
-    },
-    {
       "id": "m365-agent-templates",
       "title": "본사 공식 M365 에이전트 템플릿 갤러리",
       "icon": "images/illustrations/m365-agent-templates.png",
