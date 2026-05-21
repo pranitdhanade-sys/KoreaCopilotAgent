@@ -1,0 +1,66 @@
+name: 🐞 버그 신고 (Bug report)
+description: 사이트나 템플릿에서 발견한 문제를 알려주세요.
+title: "[Bug] "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## 버그 신고 양식
+        아래 항목을 채워 주시면 빠르게 확인하고 수정하는 데 큰 도움이 됩니다.
+        스크린샷이나 콘솔 로그가 있다면 함께 첨부해 주세요.
+
+  - type: input
+    id: location
+    attributes:
+      label: 발생 위치
+      description: 어떤 페이지/카드/링크에서 발생했나요? (URL 또는 카드 제목)
+      placeholder: "예) https://microsoft.github.io/KoreaCopilotAgent/ — 보고서 자동 생성 에이전트 카드"
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: 무슨 일이 일어났나요?
+      description: 발생한 현상을 자세히 설명해 주세요.
+      placeholder: 예) 다운로드 버튼을 눌렀는데 404 페이지가 나옵니다.
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: 재현 절차
+      description: 문제를 재현할 수 있는 단계를 적어 주세요.
+      value: |
+        1. ...로 이동
+        2. ...을 클릭
+        3. ...에서 오류 확인
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: 기대한 동작
+      placeholder: 어떤 결과가 나와야 했나요?
+    validations:
+      required: true
+
+  - type: input
+    id: environment
+    attributes:
+      label: 사용 환경
+      description: 브라우저 / OS / 디바이스를 알려주세요.
+      placeholder: "예) Edge 124 / Windows 11 / Desktop"
+    validations:
+      required: false
+
+  - type: textarea
+    id: screenshot
+    attributes:
+      label: 스크린샷 또는 로그
+      description: 이미지/콘솔 로그가 있으면 붙여 넣어 주세요. (드래그&드롭으로 첨부 가능)
+    validations:
+      required: false
