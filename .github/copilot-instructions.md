@@ -127,9 +127,27 @@ Create a square 1:1 flat 3D icon illustration: <피사체 + 핵심 디테일 1~2
 - lavender + rose pink ← `daily-work-wrapup-skill`
 - seafoam + butter yellow ← `today-wisdom-skill`
 
-추천 미사용 후보: `salmon + coral`, `butter yellow + mint`, `dusty pink + sand`, `apricot + cream`.
+**library 아이콘 (재사용 가능 — 카테고리별 다른 카드에서 같은 팔레트 OK)**
+- mint + sky ← library: meeting, robot, dashboard, clock
+- coral + peach ← library: email, prompt, teams, star
+- lavender + rose pink ← library: document, brain, chat, quote
+- amber + orange ← library: calendar, agent, notification, hourglass
+- seafoam + butter yellow ← library: checklist, chart-bar, lightbulb
+- soft blue + periwinkle ← library: presentation, sparkle, search, graduation
+- teal + cyan ← library: clipboard, chip, share
+- dusty pink + sand ← library: report, chart-pie, book, heart
+
+> library 아이콘은 `images/library/<category>/<name>.png` 에서 재사용. 카드 전용 일러스트는 여전히 `images/illustrations/<id>.png`.
+
+추천 미사용 후보 (새 카드 전용 일러스트용): `salmon + coral`, `butter yellow + mint`, `apricot + cream`, `slate blue + lilac`.
 
 > 새 카드를 만든 직후 이 파일의 팔레트 목록에 추가하세요. 그렇지 않으면 다음 세션이 같은 색을 또 씁니다.
+
+### 3-2-A. 라이브러리 먼저 확인
+
+카드를 새로 만들 때는 **먼저 `images/library/index.json` 을 살펴서 딱 맞는 아이콘이 있는지** 확인하세요.
+- 있으면 카드의 `icon` 필드를 `images/library/<category>/<name>.png` 로 지정 (전용 일러스트 생성 불필요)
+- 없으면 `images/illustrations/<id>.png` 로 새로 만들기
 
 ### 3-3. ChatGPT 다운로드 파이프라인 (Playwright 브라우저 자동화 가정)
 
