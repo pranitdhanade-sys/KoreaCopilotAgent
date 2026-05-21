@@ -31,6 +31,45 @@
     { "id": "time-clock",        "file": "library/time/clock.png",              "category": "time",      "tags": ["시계", "clock", "시간", "watch"],                     "palette": "mint+sky" },
     { "id": "time-hourglass",    "file": "library/time/hourglass.png",          "category": "time",      "tags": ["모래시계", "hourglass", "타이머", "timer"],            "palette": "amber+orange" },
     { "id": "misc-star",         "file": "library/misc/star.png",               "category": "misc",      "tags": ["별", "star", "즐겨찾기", "favorite"],                 "palette": "coral+peach" },
-    { "id": "misc-heart",        "file": "library/misc/heart.png",              "category": "misc",      "tags": ["하트", "heart", "좋아요", "사랑"],                    "palette": "dusty-pink+sand" }
+    { "id": "misc-heart",        "file": "library/misc/heart.png",              "category": "misc",      "tags": ["하트", "heart", "좋아요", "사랑"],                    "palette": "dusty-pink+sand" },
+
+    { "id": "security-shield",     "file": "library/security/shield.png",       "category": "security",  "tags": ["방패", "shield", "보안", "보호", "security"],         "palette": "mint+sky" },
+    { "id": "security-lock",       "file": "library/security/lock.png",         "category": "security",  "tags": ["자물쇠", "lock", "잠금", "보안"],                     "palette": "amber+orange" },
+    { "id": "security-key",        "file": "library/security/key.png",          "category": "security",  "tags": ["열쇠", "key", "키", "접근"],                          "palette": "coral+peach" },
+    { "id": "security-fingerprint","file": "library/security/fingerprint.png",  "category": "security",  "tags": ["지문", "fingerprint", "인증", "ID"],                  "palette": "lavender+rose" },
+    { "id": "security-vault",      "file": "library/security/vault.png",        "category": "security",  "tags": ["금고", "vault", "비밀", "보관"],                      "palette": "teal+cyan" },
+    { "id": "security-badge",      "file": "library/security/badge.png",        "category": "security",  "tags": ["배지", "badge", "인증", "신분", "verified"],          "palette": "seafoam+butter" },
+
+    { "id": "org-people",        "file": "library/org/people.png",              "category": "org",       "tags": ["사람들", "people", "조직", "사용자"],                 "palette": "soft-blue+periwinkle" },
+    { "id": "org-customer",      "file": "library/org/customer.png",            "category": "org",       "tags": ["고객", "customer", "client", "이용자"],               "palette": "dusty-pink+sand" },
+    { "id": "org-role",          "file": "library/org/role.png",                "category": "org",       "tags": ["역할", "role", "직무", "권한"],                       "palette": "mint+sky" },
+    { "id": "org-manager",       "file": "library/org/manager.png",             "category": "org",       "tags": ["매니저", "manager", "관리자", "리더"],                "palette": "amber+orange" },
+    { "id": "org-partner",       "file": "library/org/partner.png",             "category": "org",       "tags": ["파트너", "partner", "협력", "악수"],                  "palette": "lavender+rose" },
+
+    { "id": "process-workflow",  "file": "library/process/workflow.png",        "category": "process",   "tags": ["워크플로", "workflow", "흐름", "process"],            "palette": "teal+cyan" },
+    { "id": "process-automation","file": "library/process/automation.png",      "category": "process",   "tags": ["자동화", "automation", "auto", "RPA"],                "palette": "coral+peach" },
+    { "id": "process-gear",      "file": "library/process/gear.png",            "category": "process",   "tags": ["톱니바퀴", "gear", "설정", "settings"],               "palette": "soft-blue+periwinkle" },
+    { "id": "process-sync",      "file": "library/process/sync.png",            "category": "process",   "tags": ["동기화", "sync", "새로고침", "refresh"],              "palette": "seafoam+butter" },
+    { "id": "process-cycle",     "file": "library/process/cycle.png",           "category": "process",   "tags": ["순환", "cycle", "반복", "loop"],                      "palette": "dusty-pink+sand" },
+
+    { "id": "content-image",     "file": "library/content/image.png",           "category": "content",   "tags": ["이미지", "image", "사진", "picture"],                 "palette": "mint+sky" },
+    { "id": "content-video",     "file": "library/content/video.png",           "category": "content",   "tags": ["비디오", "video", "영상", "movie"],                   "palette": "amber+orange" },
+    { "id": "content-audio",     "file": "library/content/audio.png",           "category": "content",   "tags": ["오디오", "audio", "음성", "sound"],                   "palette": "lavender+rose" },
+    { "id": "content-podcast",   "file": "library/content/podcast.png",         "category": "content",   "tags": ["팟캐스트", "podcast", "마이크", "방송"],              "palette": "teal+cyan" },
+    { "id": "content-translate", "file": "library/content/translate.png",       "category": "content",   "tags": ["번역", "translate", "언어", "language"],              "palette": "coral+peach" },
+
+    { "id": "work-schedule",     "file": "library/work/schedule.png",           "category": "work",      "tags": ["스케줄", "schedule", "일정", "타임라인"],             "palette": "soft-blue+periwinkle" },
+    { "id": "work-whiteboard",   "file": "library/work/whiteboard.png",         "category": "work",      "tags": ["화이트보드", "whiteboard", "브레인스토밍", "회의"],   "palette": "seafoam+butter" },
+    { "id": "work-sticky-note",  "file": "library/work/sticky-note.png",        "category": "work",      "tags": ["스티키노트", "sticky note", "메모지", "포스트잇"],    "palette": "dusty-pink+sand" },
+
+    { "id": "ai-vector",         "file": "library/ai/vector.png",               "category": "ai",        "tags": ["벡터", "vector", "임베딩", "embedding"],              "palette": "mint+sky" },
+    { "id": "ai-fine-tune",      "file": "library/ai/fine-tune.png",            "category": "ai",        "tags": ["파인튜닝", "fine-tune", "조정", "tuning"],            "palette": "amber+orange" },
+
+    { "id": "data-table",        "file": "library/data/table.png",              "category": "data",      "tags": ["테이블", "table", "표", "스프레드시트"],              "palette": "lavender+rose" },
+    { "id": "data-filter",       "file": "library/data/filter.png",             "category": "data",      "tags": ["필터", "filter", "걸러내기", "정렬"],                 "palette": "teal+cyan" },
+
+    { "id": "knowledge-idea",    "file": "library/knowledge/idea.png",          "category": "knowledge", "tags": ["아이디어", "idea", "영감", "inspiration"],            "palette": "coral+peach" },
+
+    { "id": "time-timer",        "file": "library/time/timer.png",              "category": "time",      "tags": ["타이머", "timer", "스톱워치", "stopwatch"],           "palette": "soft-blue+periwinkle" }
   ]
 }

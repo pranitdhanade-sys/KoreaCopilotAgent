@@ -128,14 +128,14 @@ Create a square 1:1 flat 3D icon illustration: <피사체 + 핵심 디테일 1~2
 - seafoam + butter yellow ← `today-wisdom-skill`
 
 **library 아이콘 (재사용 가능 — 카테고리별 다른 카드에서 같은 팔레트 OK)**
-- mint + sky ← library: meeting, robot, dashboard, clock
-- coral + peach ← library: email, prompt, teams, star
-- lavender + rose pink ← library: document, brain, chat, quote
-- amber + orange ← library: calendar, agent, notification, hourglass
-- seafoam + butter yellow ← library: checklist, chart-bar, lightbulb
-- soft blue + periwinkle ← library: presentation, sparkle, search, graduation
-- teal + cyan ← library: clipboard, chip, share
-- dusty pink + sand ← library: report, chart-pie, book, heart
+- mint + sky ← library: meeting, robot, dashboard, clock, role, image, vector, shield
+- coral + peach ← library: email, prompt, teams, star, automation, translate, idea, key
+- lavender + rose pink ← library: document, brain, chat, quote, partner, audio, table, fingerprint
+- amber + orange ← library: calendar, agent, notification, hourglass, manager, video, fine-tune, lock
+- seafoam + butter yellow ← library: checklist, chart-bar, lightbulb, badge, sync, whiteboard
+- soft blue + periwinkle ← library: presentation, sparkle, search, graduation, people, gear, schedule, timer
+- teal + cyan ← library: clipboard, chip, share, workflow, podcast, filter, vault
+- dusty pink + sand ← library: report, chart-pie, book, heart, customer, cycle, sticky-note
 
 > library 아이콘은 `images/library/<category>/<name>.png` 에서 재사용. 카드 전용 일러스트는 여전히 `images/illustrations/<id>.png`.
 
