@@ -24,6 +24,7 @@ data/courses.json           # 교육 과정 (온디맨드/유료/무료)
 data/handson.json           # 핸즈온 워크샵
 data/prompts.json           # 프롬프트 모음
 data/skills.json            # Copilot 스킬
+data/plugins.json           # Copilot Cowork 플러그인
 images/illustrations/*.png  # 카드 아이콘 (1024×1024 PNG)
 images/og-image.png         # 1200×630 Open Graph 카드
 images/favicon-32.png       # 파비콘
@@ -127,6 +128,9 @@ Create a square 1:1 flat 3D icon illustration: <피사체 + 핵심 디테일 1~2
 - lavender + rose pink ← `daily-work-wrapup-skill`
 - seafoam + butter yellow ← `today-wisdom-skill`
 
+**plugins (Copilot Cowork 플러그인)**
+- slate blue + lilac ← `telecom-insights-plugin`
+
 **library 아이콘 (재사용 가능 — 카테고리별 다른 카드에서 같은 팔레트 OK)**
 - mint + sky ← library: meeting, robot, dashboard, clock, role, image, vector, shield
 - coral + peach ← library: email, prompt, teams, star, automation, translate, idea, key
@@ -139,7 +143,7 @@ Create a square 1:1 flat 3D icon illustration: <피사체 + 핵심 디테일 1~2
 
 > library 아이콘은 `images/library/<category>/<name>.png` 에서 재사용. 카드 전용 일러스트는 여전히 `images/illustrations/<id>.png`.
 
-추천 미사용 후보 (새 카드 전용 일러스트용): `salmon + coral`, `butter yellow + mint`, `apricot + cream`, `slate blue + lilac`.
+추천 미사용 후보 (새 카드 전용 일러스트용): `salmon + coral`, `butter yellow + mint`, `apricot + cream`.
 
 > 새 카드를 만든 직후 이 파일의 팔레트 목록에 추가하세요. 그렇지 않으면 다음 세션이 같은 색을 또 씁니다.
 

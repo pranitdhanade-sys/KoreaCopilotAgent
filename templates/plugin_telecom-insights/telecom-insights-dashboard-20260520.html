@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>제조사별 고객 증감·충성도·번들 분석 · Telecom Insights</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <style>
+    :root {
+      --primary: #0078D4;
+      --primary-dark: #106EBE;
+      --primary-light: #2B88D8;
+      --bg: #FAF9F8;
+      --surface: #FFFFFF;
+      --text: #201F1E;
+      --text-muted: #605E5C;
+      --border: #EDEBE9;
+      --warning: #D83B01;
+      --success: #107C10;
+      --accent: #5C2D91;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; background: var(--bg); color: var(--text);
+      font-family: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      line-height: 1.5; }
+    header.app-header {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: #fff; padding: 32px 40px;
+    }
+    header.app-header h1 { margin: 0 0 8px; font-size: 28px; font-weight: 600; }
+    header.app-header .meta { font-size: 13px; opacity: 0.9; }
+    main { padding: 24px 40px 80px; max-width: 1400px; margin: 0 auto; }
+    section { margin-top: 32px; }
+    section h2 {
+      font-size: 18px; font-weight: 600; margin: 0 0 16px;
+      padding-bottom: 8px; border-bottom: 2px solid var(--border);
+    }
+    .kpi-grid {
+      display: grid; gap: 16px;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+    .kpi-card {
+      background: var(--surface); border: 1px solid var(--border); border-radius: 8px;
+      padding: 20px; box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+    }
+    .kpi-value { font-size: 28px; font-weight: 700; color: var(--primary); }
+    .kpi-unit  { font-size: 14px; font-weight: 500; color: var(--text-muted); margin-left: 4px; }
+    .kpi-label { font-size: 13px; color: var(--text-muted); margin-top: 4px; }
+    .kpi-sub   { font-size: 12px; color: var(--success); margin-top: 8px; }
+    .kpi-sub.warn { color: var(--warning); }
+    .chart-grid {
+      display: grid; gap: 16px;
+      grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+    }
+    .chart-card {
+      background: var(--surface); border: 1px solid var(--border); border-radius: 8px;
+      padding: 20px; box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+    }
+    .chart-card h3 { margin: 0 0 12px; font-size: 15px; font-weight: 600; }
+    .chart-card canvas { max-height: 280px; }
+    .chart-caption { font-size: 12px; color: var(--text-muted); margin: 12px 0 0; }
+    table.segment-table {
+      width: 100%; border-collapse: collapse; background: var(--surface);
+      border: 1px solid var(--border); border-radius: 8px; overflow: hidden;
+    }
+    table.segment-table th, table.segment-table td {
+      padding: 10px 14px; text-align: left; font-size: 13px;
+      border-bottom: 1px solid var(--border);
+    }
+    table.segment-table thead th { background: #F3F2F1; font-weight: 600; position: sticky; top: 0; }
+    table.segment-table tbody tr:nth-child(even) { background: #FAFAFA; }
+    .insights ol { padding-left: 24px; }
+    .insights li { margin-bottom: 8px; }
+    .action-grid {
+      display: grid; gap: 12px;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+    .action-card {
+      padding: 16px; border-radius: 8px; background: var(--surface);
+      border-left: 4px solid var(--primary);
+    }
+    .action-retention { border-left-color: var(--primary); }
+    .action-upsell    { border-left-color: var(--accent); }
+    .action-cs        { border-left-color: var(--warning); }
+    .action-tag {
+      display: inline-block; font-size: 11px; font-weight: 600; text-transform: uppercase;
+      color: var(--text-muted); margin-bottom: 6px; letter-spacing: 0.5px;
+    }
+    .action-text { font-size: 14px; }
+    .action-title { font-weight: 600; margin-bottom: 6px; color: var(--primary-dark); }
+    details.sql-used { margin-top: 16px; }
+    details.sql-used summary { cursor: pointer; font-size: 13px; color: var(--text-muted); }
+    details.sql-used pre {
+      background: #1E1E1E; color: #D4D4D4; padding: 16px; border-radius: 8px;
+      overflow-x: auto; font-family: 'Cascadia Code', 'Consolas', monospace; font-size: 12px;
+    }
+    footer.app-footer {
+      text-align: center; padding: 24px; color: var(--text-muted); font-size: 12px;
+      border-top: 1px solid var(--border); margin-top: 48px;
+    }
+    @media (max-width: 720px) {
+      header.app-header { padding: 24px; }
+      main { padding: 16px; }
+      .chart-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header class="app-header">
+    <h1>제조사별 고객 증감·충성도·번들 프로그램 인사이트</h1>
+    <div class="meta">생성: 2026-05-20 · 표본: 1,000명 · 범위: 전체 가입자(Activation 2022~2026) · 출처: Telecom DB MCP</div>
+  </header>
+
+  <main>
+    <section>
+      <h2>핵심 KPI</h2>
+      <div class="kpi-grid">
+        <div class="kpi-card">
+          <div class="kpi-value">1,000<span class="kpi-unit">명</span></div>
+          <div class="kpi-label">총 분석 표본</div>
+          <div class="kpi-sub">제조사 4개 · 번들 3개</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-value">5.84<span class="kpi-unit">/10</span></div>
+          <div class="kpi-label">최고 평균 충성도(Google)</div>
+          <div class="kpi-sub">Apple 대비 +0.69 pt</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-value">+23.4<span class="kpi-unit">%</span></div>
+          <div class="kpi-label">2025 Samsung YoY 증가</div>
+          <div class="kpi-sub">유일하게 2025년 성장</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-value">33.7<span class="kpi-unit">%</span></div>
+          <div class="kpi-label">최다 번들(Internet+TV)</div>
+          <div class="kpi-sub">Single 33.6%, Family 32.7%</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-value">6.25<span class="kpi-unit">/10</span></div>
+          <div class="kpi-label">최고 충성 조합(Google × Internet+TV)</div>
+          <div class="kpi-sub">전체 평균 5.57 대비 +0.68</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-value">6.10<span class="kpi-unit">/10</span></div>
+          <div class="kpi-label">최고 충성 옵션 조합 평균</div>
+          <div class="kpi-sub">Single + Device보조금 + Trade-in</div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>분석 차트</h2>
+      <div class="chart-grid">
+        <div class="chart-card">
+          <h3>연도별 제조사 고객 수 추이</h3>
+          <canvas id="chartYearlyCount"></canvas>
+          <p class="chart-caption">2023년 4사 모두 폭증(시장 진입기), 2024년부터 분기. Samsung만 2025년 성장(+23.4%) 유지.</p>
+        </div>
+        <div class="chart-card">
+          <h3>제조사별 YoY 증감률(%)</h3>
+          <canvas id="chartYoY"></canvas>
+          <p class="chart-caption">2025년 Samsung +23.4%로 유일한 성장. Google·Apple은 두 자릿수 감소 전환. 2026년은 부분 집계.</p>
+        </div>
+        <div class="chart-card">
+          <h3>제조사별 평균 충성도(Brand Loyalty Score)</h3>
+          <canvas id="chartLoyalty"></canvas>
+          <p class="chart-caption">Google 5.84로 1위, Apple 5.15로 최저. 4사 격차는 0.69 pt(전체 평균 5.57).</p>
+        </div>
+        <div class="chart-card">
+          <h3>번들 프로그램 점유율</h3>
+          <canvas id="chartBundleShare"></canvas>
+          <p class="chart-caption">Internet+TV·Single·Family가 거의 균등(33%대). 시장 쏠림 없음 → 조합 다변화 여지 큼.</p>
+        </div>
+        <div class="chart-card">
+          <h3>제조사 × 번들 평균 충성도</h3>
+          <canvas id="chartBundleMfr"></canvas>
+          <p class="chart-caption">Google×Internet+TV(6.25)와 Samsung×Family(5.96)가 가장 높음. Apple은 어떤 번들에서도 5.5 이하.</p>
+        </div>
+        <div class="chart-card">
+          <h3>상위 5개 옵션 조합별 충성도</h3>
+          <canvas id="chartComboLoyalty"></canvas>
+          <p class="chart-caption">"보험 미가입 + Trade-in 가입" 패턴이 상위 조합에 공통 등장. Trade-in이 충성도 핵심 레버.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>세그먼트 비교 — 연도별 제조사 고객 증감</h2>
+      <table class="segment-table">
+        <thead><tr><th>제조사</th><th>2022</th><th>2023</th><th>2024</th><th>2025</th><th>2026(부분)</th><th>2025 YoY</th></tr></thead>
+        <tbody>
+          <tr><td>Samsung</td><td>13</td><td>57 (+338.5%)</td><td>64 (+12.3%)</td><td>79 (+23.4%)</td><td>27</td><td style="color:var(--success);font-weight:600;">+23.4%</td></tr>
+          <tr><td>Apple</td><td>12</td><td>65 (+441.7%)</td><td>76 (+16.9%)</td><td>69 (-9.2%)</td><td>33</td><td style="color:var(--warning);font-weight:600;">-9.2%</td></tr>
+          <tr><td>Google</td><td>12</td><td>73 (+508.3%)</td><td>81 (+11.0%)</td><td>64 (-21.0%)</td><td>21</td><td style="color:var(--warning);font-weight:600;">-21.0%</td></tr>
+          <tr><td>Xiaomi</td><td>10</td><td>84 (+740.0%)</td><td>71 (-15.5%)</td><td>71 (0.0%)</td><td>18</td><td style="color:var(--text-muted);font-weight:600;">0.0%</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>세그먼트 비교 — 번들 × 옵션 조합 Top 6 (충성도 순)</h2>
+      <table class="segment-table">
+        <thead><tr><th>번들</th><th>보조금</th><th>보험</th><th>Trade-in</th><th>표본</th><th>평균 충성도</th><th>평균 데이터(GB)</th></tr></thead>
+        <tbody>
+          <tr><td>Single</td><td>Device 보조금</td><td>X</td><td>O</td><td>41</td><td><b>6.10</b></td><td>48.1</td></tr>
+          <tr><td>Single</td><td>Selective Contract</td><td>X</td><td>O</td><td>38</td><td><b>6.08</b></td><td>52.0</td></tr>
+          <tr><td>Family</td><td>Selective Contract</td><td>X</td><td>O</td><td>37</td><td><b>6.05</b></td><td>47.6</td></tr>
+          <tr><td>Internet+TV</td><td>Device 보조금</td><td>X</td><td>O</td><td>43</td><td>5.81</td><td>52.8</td></tr>
+          <tr><td>Family</td><td>Device 보조금</td><td>X</td><td>O</td><td>56</td><td>5.75</td><td>51.8</td></tr>
+          <tr><td>Internet+TV</td><td>Selective Contract</td><td>X</td><td>X</td><td>32</td><td>5.75</td><td>50.7</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="insights">
+      <h2>주요 인사이트</h2>
+      <ol>
+        <li><b>Samsung만 2025년 역성장 흐름을 뒤집었다(+23.4%).</b> 같은 해 Apple -9.2%, Google -21.0%, Xiaomi 정체(0.0%). Samsung × Family 조합의 평균 충성도(5.96)가 자사 평균(5.71)을 크게 상회 — Family 번들이 Samsung 성장의 주 견인 요소로 보인다.</li>
+        <li><b>충성도 1위는 Google(5.84), 핵심 조합은 Google × Internet+TV(6.25).</b> 전체 평균 5.57보다 +0.68 pt 높은 단일 최고 셀. 반면 Google은 2025년 YoY -21.0%로 신규 유입은 줄고 기존 가입자 충성도만 높은 "고정팬" 구조.</li>
+        <li><b>번들 점유는 3개가 거의 균등(33%대)하나, 충성도 차이는 옵션 조합에서 발생한다.</b> 상위 6개 조합 중 5개가 "보험 미가입 + Trade-in 가입" 패턴. Trade-in이 충성도의 강한 양의 신호, 의무 보험은 오히려 음의 신호.</li>
+        <li><b>Apple은 모든 번들에서 충성도 5.5 이하로 최저(5.15).</b> 보유 고객은 255명으로 가장 많으나 결합 효과가 약함 — 단말 단독 매력으로 유입, 부가 서비스 묶음에는 상대적으로 무반응.</li>
+        <li><b>Device 보조금(54.2%)과 Selective Contract(45.8%) 비중은 거의 비등하나 충성도는 보조금 쪽이 +0.12 pt 우위.</b> 보조금 기반 가입자가 약정 잔존도·재계약 확률이 높다고 해석 가능.</li>
+      </ol>
+    </section>
+
+    <section>
+      <h2>권장 액션 — 신규 번들 프로그램 제안 3종</h2>
+      <div class="action-grid">
+        <div class="action-card action-upsell">
+          <div class="action-tag">번들 신상품</div>
+          <div class="action-title">① "Trade-in Boost" Single 플랜</div>
+          <div class="action-text">Single 번들 + Device 보조금 + Trade-in을 묶고 의무 보험을 제외한 패키지. 데이터 기반 최고 충성 조합(6.10/10)을 상품화. Apple·Xiaomi의 Single 가입자 (총 182명) 대상 업셀로 우선 적용.</div>
+        </div>
+        <div class="action-card action-retention">
+          <div class="action-tag">번들 신상품</div>
+          <div class="action-title">② "Family Pro" Samsung 전용 결합</div>
+          <div class="action-text">Samsung × Family 조합이 충성도 5.96·2025 +23.4% 성장의 핵심 동력. 가족 회선 추가 시 단말 보조금 누진 + 가족 공용 Trade-in 크레딧 제공. Samsung Family 78명을 기반으로 신규 가족 단위 모객.</div>
+        </div>
+        <div class="action-card action-upsell">
+          <div class="action-tag">번들 신상품</div>
+          <div class="action-title">③ "Home Stream Plus" Google 전용</div>
+          <div class="action-text">Google × Internet+TV(충성도 6.25, 표본 84명)는 단일 최고 셀. IPTV·OTT·홈 IoT를 묶은 프리미엄 결합으로 Pixel 사용자의 록인 강화. 충성도 8 이상 고객에게 베타 초청 발송.</div>
+        </div>
+        <div class="action-card action-cs">
+          <div class="action-tag">리텐션</div>
+          <div class="action-title">Apple 결합 활성화 캠페인</div>
+          <div class="action-text">Apple 255명 중 결합(Family/Internet+TV) 가입자는 충성도 5.0 이하. iCloud·Apple Music 등 Apple 생태계와 묶을 수 있는 콘텐츠 결합 옵션 신설 검토.</div>
+        </div>
+        <div class="action-card action-cs">
+          <div class="action-tag">옵션 재설계</div>
+          <div class="action-title">의무 보험 → 선택 보험 전환</div>
+          <div class="action-text">상위 충성 조합 5/6이 "보험 미가입". 보험 의무 동봉은 충성도를 떨어뜨리는 신호. 보험을 선택 옵션화하고 Trade-in을 기본 옵션으로 승격.</div>
+        </div>
+        <div class="action-card action-retention">
+          <div class="action-tag">리텐션</div>
+          <div class="action-title">Google·Xiaomi 2025 이탈 방어</div>
+          <div class="action-text">Google -21.0%, Xiaomi 0.0%는 신규 유입 둔화 신호. 두 브랜드의 고충성(8점 이상) 고객 대상 Trade-in 사전 안내 + 차기작 우선 예약권으로 재계약 견인.</div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>참고</h2>
+      <details class="sql-used">
+        <summary>사용된 SQL 쿼리 보기</summary>
+        <pre>-- 1) 연도별 제조사 고객 수 + YoY
+WITH yearly AS (
+  SELECT EXTRACT(YEAR FROM Activation_Date) AS yr,
+         Manufacturer, COUNT(*) AS cnt
+  FROM devices
+  WHERE Activation_Date IS NOT NULL
+  GROUP BY 1, 2
+)
+SELECT yr, Manufacturer, cnt,
+       LAG(cnt) OVER (PARTITION BY Manufacturer ORDER BY yr) AS prev_cnt,
+       ROUND(100.0 * (cnt - LAG(cnt) OVER (PARTITION BY Manufacturer ORDER BY yr))
+             / NULLIF(LAG(cnt) OVER (PARTITION BY Manufacturer ORDER BY yr), 0), 1) AS yoy_pct
+FROM yearly
+ORDER BY Manufacturer, yr;
+
+-- 2) 제조사별 충성도/교체주기
+SELECT Manufacturer, COUNT(*) AS customers,
+       ROUND(AVG(Brand_Loyalty_Score), 2) AS avg_loyalty,
+       ROUND(AVG(Avg_Replacement_Cycle_Months), 1) AS avg_replace_months,
+       ROUND(AVG(Months_in_Use), 1) AS avg_months_in_use
+FROM devices GROUP BY Manufacturer ORDER BY avg_loyalty DESC;
+
+-- 3) 번들/보조금/보험/Trade-in 조합별 충성도 Top
+SELECT Bundling_Status, Subsidy_Type, Device_Insurance, Trade_in_Program,
+       COUNT(*) AS cnt,
+       ROUND(AVG(Brand_Loyalty_Score), 2) AS avg_loyalty,
+       ROUND(AVG(Avg_Data_Usage_GB), 1) AS avg_data_gb
+FROM devices GROUP BY 1,2,3,4 HAVING COUNT(*) >= 15
+ORDER BY avg_loyalty DESC, cnt DESC LIMIT 20;
+
+-- 4) 제조사 × 번들 매트릭스
+SELECT Manufacturer, Bundling_Status, COUNT(*) AS cnt,
+       ROUND(AVG(Brand_Loyalty_Score), 2) AS avg_loyalty
+FROM devices GROUP BY 1,2 ORDER BY Manufacturer, cnt DESC;</pre>
+      </details>
+      <p style="font-size:12px;color:var(--text-muted);margin-top:12px;">
+        * 본 데이터는 1,000행 표본 더미 데이터입니다. 2026년은 부분 집계이므로 YoY 해석에서 제외했습니다.
+      </p>
+    </section>
+  </main>
+
+  <footer class="app-footer">Generated by Cowork · Telecom Customer Insights Plugin</footer>
+
+  <script>
+  // 1) 연도별 제조사 고객 수
+  new Chart(document.getElementById('chartYearlyCount'), {
+    type: 'line',
+    data: {
+      labels: ['2022','2023','2024','2025','2026(부분)'],
+      datasets: [
+        { label:'Samsung', data:[13,57,64,79,27], borderColor:'#0078D4', backgroundColor:'#0078D4', tension:0.3 },
+        { label:'Apple',   data:[12,65,76,69,33], borderColor:'#5C2D91', backgroundColor:'#5C2D91', tension:0.3 },
+        { label:'Google',  data:[12,73,81,64,21], borderColor:'#107C10', backgroundColor:'#107C10', tension:0.3 },
+        { label:'Xiaomi',  data:[10,84,71,71,18], borderColor:'#D83B01', backgroundColor:'#D83B01', tension:0.3 }
+      ]
+    },
+    options: { responsive:true, plugins:{ legend:{ position:'bottom' } }, scales:{ y:{ beginAtZero:true } } }
+  });
+
+  // 2) YoY (%)
+  new Chart(document.getElementById('chartYoY'), {
+    type: 'bar',
+    data: {
+      labels: ['2023','2024','2025','2026(부분)'],
+      datasets: [
+        { label:'Samsung', data:[338.5,12.3,23.4,-65.8], backgroundColor:'#0078D4' },
+        { label:'Apple',   data:[441.7,16.9,-9.2,-52.2], backgroundColor:'#5C2D91' },
+        { label:'Google',  data:[508.3,11.0,-21.0,-67.2], backgroundColor:'#107C10' },
+        { label:'Xiaomi',  data:[740.0,-15.5,0.0,-74.6], backgroundColor:'#D83B01' }
+      ]
+    },
+    options: { responsive:true, plugins:{ legend:{ position:'bottom' } } }
+  });
+
+  // 3) 제조사 평균 충성도
+  new Chart(document.getElementById('chartLoyalty'), {
+    type: 'bar',
+    data: {
+      labels: ['Google','Samsung','Xiaomi','Apple'],
+      datasets: [{
+        label:'평균 충성도',
+        data:[5.84, 5.71, 5.58, 5.15],
+        backgroundColor:['#0078D4','#2B88D8','#106EBE','#005A9E']
+      }]
+    },
+    options: { responsive:true, plugins:{ legend:{ display:false } }, scales:{ y:{ beginAtZero:true, max:10 } } }
+  });
+
+  // 4) 번들 점유율
+  new Chart(document.getElementById('chartBundleShare'), {
+    type: 'doughnut',
+    data: {
+      labels: ['Internet+TV (337명)','Single (336명)','Family (327명)'],
+      datasets: [{
+        data: [337,336,327],
+        backgroundColor: ['#0078D4','#5C2D91','#107C10']
+      }]
+    },
+    options: { responsive:true, plugins:{ legend:{ position:'bottom' } } }
+  });
+
+  // 5) 제조사 × 번들 충성도
+  new Chart(document.getElementById('chartBundleMfr'), {
+    type: 'bar',
+    data: {
+      labels: ['Apple','Google','Samsung','Xiaomi'],
+      datasets: [
+        { label:'Single',      data:[5.54, 5.51, 5.86, 5.50], backgroundColor:'#0078D4' },
+        { label:'Family',      data:[4.99, 5.74, 5.96, 5.48], backgroundColor:'#5C2D91' },
+        { label:'Internet+TV', data:[4.93, 6.25, 5.38, 5.77], backgroundColor:'#107C10' }
+      ]
+    },
+    options: { responsive:true, plugins:{ legend:{ position:'bottom' } }, scales:{ y:{ beginAtZero:true, max:7 } } }
+  });
+
+  // 6) 상위 옵션 조합 충성도
+  new Chart(document.getElementById('chartComboLoyalty'), {
+    type: 'bar',
+    data: {
+      labels: [
+        'Single+보조금+Trade-in',
+        'Single+Selective+Trade-in',
+        'Family+Selective+Trade-in',
+        'Internet+TV+보조금+Trade-in',
+        'Family+보조금+Trade-in'
+      ],
+      datasets: [{
+        label:'평균 충성도',
+        data:[6.10, 6.08, 6.05, 5.81, 5.75],
+        backgroundColor:['#0078D4','#2B88D8','#106EBE','#005A9E','#004578']
+      }]
+    },
+    options: {
+      indexAxis:'y',
+      responsive:true,
+      plugins:{ legend:{ display:false } },
+      scales:{ x:{ beginAtZero:true, max:7 } }
+    }
+  });
+  </script>
+</body>
+</html>

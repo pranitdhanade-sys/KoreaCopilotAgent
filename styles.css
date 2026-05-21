@@ -36,6 +36,8 @@
   --tag-course-fg: #b86c00;
   --tag-handson-bg: #f3eaff;
   --tag-handson-fg: #7c3aed;
+  --tag-plugin-bg: #ece9ff;
+  --tag-plugin-fg: #5b53c7;
 
   /* Pastel card backgrounds */
   --card-pink: #ffe6ec;
@@ -498,6 +500,7 @@ svg {
 .tag[data-tag="skill"]   { background: var(--tag-skill-bg);       color: var(--tag-skill-fg); }
 .tag[data-tag="course"]  { background: var(--tag-course-bg);      color: var(--tag-course-fg); }
 .tag[data-tag="handson"] { background: var(--tag-handson-bg);     color: var(--tag-handson-fg); }
+.tag[data-tag="plugin"]  { background: var(--tag-plugin-bg);      color: var(--tag-plugin-fg); }
 
 .template-desc {
   margin: 0 0 16px;

@@ -1,0 +1,16 @@
+{
+  "items": [
+    {
+      "id": "telecom-insights-plugin",
+      "title": "Telecom Insights 플러그인",
+      "icon": "images/illustrations/plugin-telecom-insights.png",
+      "fallbackEmoji": "📡",
+      "description": "통신사 고객 데이터를 분석해 제조사별 고객 증감·평균 충성도·번들 프로그램 사용 패턴을 Word 보고서, PowerPoint 슬라이드, 인터랙티브 HTML 대시보드로 만들어주는 Copilot Cowork 플러그인입니다. Copilot 공동 작업 채팅에서 활성화한 뒤 자연어로 분석을 요청하면 자동으로 보고서를 생성합니다.",
+      "downloads": [
+        { "label": "플러그인 패키지 다운로드 (ZIP)", "fileType": "ZIP", "url": "templates/plugin_telecom-insights/telecom-insights.zip" },
+        { "label": "고객 분석 보고서 샘플 (DOCX)", "fileType": "DOCX", "url": "templates/plugin_telecom-insights/%ED%86%B5%EC%8B%A0_%EA%B3%A0%EA%B0%9D_%EB%B6%84%EC%84%9D_%EB%B3%B4%EA%B3%A0%EC%84%9C_20260520.docx" },
+        { "label": "인사이트 대시보드 샘플 (HTML)", "fileType": "HTML", "url": "templates/plugin_telecom-insights/telecom-insights-dashboard-20260520.html" }
+      ]
+    }
+  ]
+}
