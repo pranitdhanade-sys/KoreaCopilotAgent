@@ -1,8 +1,8 @@
 blank_issues_enabled: false
 contact_links:
-  - name: ❓ 질문하기 (Q&A)
-    url: https://github.com/microsoft/KoreaCopilotAgent/discussions
-    about: 사용법, 설정, 베스트 프랙티스 관련 질문은 Discussions에 남겨 주세요. (질문은 이슈가 아닌 토론으로 관리합니다)
+  - name: ❓ 질문하기 (이메일 문의)
+    url: mailto:jechoi@microsoft.com?subject=%5BM365%20Agent%20Templates%5D%20%EC%A7%88%EB%AC%B8%ED%95%98%EA%B8%B0
+    about: 사용법, 설정, 베스트 프랙티스 관련 질문은 jechoi@microsoft.com 으로 메일을 보내 주세요.
   - name: 📚 사이트 둘러보기
     url: https://microsoft.github.io/KoreaCopilotAgent/
     about: M365 Agent Templates 카탈로그를 먼저 살펴보세요.
